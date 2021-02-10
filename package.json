@@ -1,6 +1,6 @@
 {
   "name": "@quant-finance/solidity-datetime",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A gas-efficient Solidity date and time library.",
   "files": [
     "contracts/BokkyPooBahsDateTimeLibrary.sol"
