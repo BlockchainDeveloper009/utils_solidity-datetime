@@ -1,6 +1,7 @@
-pragma solidity ^0.6.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.7.0;
 
-import "BokkyPooBahsDateTimeLibrary.sol";
+import "./BokkyPooBahsDateTimeLibrary.sol";
 
 // ----------------------------------------------------------------------------
 // Testing BokkyPooBah's DateTime Library
@@ -16,7 +17,7 @@ contract TestDateTime {
     uint256 public nextYear;
 
     function test() public {
-        uint256 today = now;
+        uint256 today = block.timestamp;
         nextYear = today.addYears(1);
     }
 

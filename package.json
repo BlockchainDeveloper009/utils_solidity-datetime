@@ -1,12 +1,10 @@
 {
-  "name": "solidity-datetime",
+  "name": "@quant-finance/solidity-datetime",
   "version": "1.0.0",
   "description": "A gas-efficient Solidity date and time library.",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs",
-    "test": "test"
-  },
+  "files": [
+    "contracts/BokkyPooBahsDateTimeLibrary.sol"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

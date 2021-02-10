@@ -1,4 +1,5 @@
-pragma solidity ^0.6.0;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.7.0;
 
 // ----------------------------------------------------------------------------
 // BokkyPooBah's DateTime Library v1.00 - Contract Instance
@@ -28,7 +29,7 @@ pragma solidity ^0.6.0;
 // https://www.gnu.org/licenses/lgpl-3.0.en.html
 // ----------------------------------------------------------------------------
 
-import "BokkyPooBahsDateTimeLibrary.sol";
+import "./BokkyPooBahsDateTimeLibrary.sol";
 
 contract BokkyPooBahsDateTimeContract {
     uint256 public constant SECONDS_PER_DAY = 24 * 60 * 60;
@@ -45,7 +46,7 @@ contract BokkyPooBahsDateTimeContract {
     uint256 public constant DOW_SUN = 7;
 
     function _now() public view returns (uint256 timestamp) {
-        timestamp = now;
+        timestamp = block.timestamp;
     }
 
     function _nowDateTime()
@@ -61,7 +62,7 @@ contract BokkyPooBahsDateTimeContract {
         )
     {
         (year, month, day, hour, minute, second) = BokkyPooBahsDateTimeLibrary
-            .timestampToDateTime(now);
+            .timestampToDateTime(block.timestamp);
     }
 
     function _daysFromDate(
