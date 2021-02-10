@@ -2,7 +2,7 @@
 pragma solidity ^0.7.0;
 
 // ----------------------------------------------------------------------------
-// BokkyPooBah's DateTime Library v1.01
+// DateTime Library v2.0
 //
 // A gas-efficient Solidity date and time library
 //
@@ -26,7 +26,7 @@ pragma solidity ^0.7.0;
 // Enjoy. (c) BokkyPooBah / Bok Consulting Pty Ltd 2018-2019. The MIT Licence.
 // ----------------------------------------------------------------------------
 
-library BokkyPooBahsDateTimeLibrary {
+library DateTime {
     uint256 constant SECONDS_PER_DAY = 24 * 60 * 60;
     uint256 constant SECONDS_PER_HOUR = 60 * 60;
     uint256 constant SECONDS_PER_MINUTE = 60;

@@ -2,11 +2,11 @@
 pragma solidity ^0.7.0;
 
 // ----------------------------------------------------------------------------
-// BokkyPooBah's DateTime Library v1.00 - Contract Instance
+// DateTime Library v2.0 - Contract Instance
 //
 // A gas-efficient Solidity date and time library
 //
-// https://github.com/bokkypoobah/BokkyPooBahsDateTimeLibrary
+// https://github.com/bokkypoobah/DateTime
 //
 // Tested date range 1970/01/01 to 2345/12/31
 //
@@ -29,9 +29,9 @@ pragma solidity ^0.7.0;
 // https://www.gnu.org/licenses/lgpl-3.0.en.html
 // ----------------------------------------------------------------------------
 
-import "./BokkyPooBahsDateTimeLibrary.sol";
+import "./DateTime.sol";
 
-contract BokkyPooBahsDateTimeContract {
+contract DateTimeContract {
     uint256 public constant SECONDS_PER_DAY = 24 * 60 * 60;
     uint256 public constant SECONDS_PER_HOUR = 60 * 60;
     uint256 public constant SECONDS_PER_MINUTE = 60;
@@ -61,8 +61,9 @@ contract BokkyPooBahsDateTimeContract {
             uint256 second
         )
     {
-        (year, month, day, hour, minute, second) = BokkyPooBahsDateTimeLibrary
-            .timestampToDateTime(block.timestamp);
+        (year, month, day, hour, minute, second) = DateTime.timestampToDateTime(
+            block.timestamp
+        );
     }
 
     function _daysFromDate(
@@ -70,7 +71,7 @@ contract BokkyPooBahsDateTimeContract {
         uint256 month,
         uint256 day
     ) public pure returns (uint256 _days) {
-        return BokkyPooBahsDateTimeLibrary._daysFromDate(year, month, day);
+        return DateTime._daysFromDate(year, month, day);
     }
 
     function _daysToDate(uint256 _days)
@@ -82,7 +83,7 @@ contract BokkyPooBahsDateTimeContract {
             uint256 day
         )
     {
-        return BokkyPooBahsDateTimeLibrary._daysToDate(_days);
+        return DateTime._daysToDate(_days);
     }
 
     function timestampFromDate(
@@ -90,7 +91,7 @@ contract BokkyPooBahsDateTimeContract {
         uint256 month,
         uint256 day
     ) public pure returns (uint256 timestamp) {
-        return BokkyPooBahsDateTimeLibrary.timestampFromDate(year, month, day);
+        return DateTime.timestampFromDate(year, month, day);
     }
 
     function timestampFromDateTime(
@@ -102,7 +103,7 @@ contract BokkyPooBahsDateTimeContract {
         uint256 second
     ) public pure returns (uint256 timestamp) {
         return
-            BokkyPooBahsDateTimeLibrary.timestampFromDateTime(
+            DateTime.timestampFromDateTime(
                 year,
                 month,
                 day,
@@ -121,9 +122,7 @@ contract BokkyPooBahsDateTimeContract {
             uint256 day
         )
     {
-        (year, month, day) = BokkyPooBahsDateTimeLibrary.timestampToDate(
-            timestamp
-        );
+        (year, month, day) = DateTime.timestampToDate(timestamp);
     }
 
     function timestampToDateTime(uint256 timestamp)
@@ -138,8 +137,9 @@ contract BokkyPooBahsDateTimeContract {
             uint256 second
         )
     {
-        (year, month, day, hour, minute, second) = BokkyPooBahsDateTimeLibrary
-            .timestampToDateTime(timestamp);
+        (year, month, day, hour, minute, second) = DateTime.timestampToDateTime(
+            timestamp
+        );
     }
 
     function isValidDate(
@@ -147,7 +147,7 @@ contract BokkyPooBahsDateTimeContract {
         uint256 month,
         uint256 day
     ) public pure returns (bool valid) {
-        valid = BokkyPooBahsDateTimeLibrary.isValidDate(year, month, day);
+        valid = DateTime.isValidDate(year, month, day);
     }
 
     function isValidDateTime(
@@ -158,7 +158,7 @@ contract BokkyPooBahsDateTimeContract {
         uint256 minute,
         uint256 second
     ) public pure returns (bool valid) {
-        valid = BokkyPooBahsDateTimeLibrary.isValidDateTime(
+        valid = DateTime.isValidDateTime(
             year,
             month,
             day,
@@ -169,19 +169,19 @@ contract BokkyPooBahsDateTimeContract {
     }
 
     function isLeapYear(uint256 timestamp) public pure returns (bool leapYear) {
-        leapYear = BokkyPooBahsDateTimeLibrary.isLeapYear(timestamp);
+        leapYear = DateTime.isLeapYear(timestamp);
     }
 
     function _isLeapYear(uint256 year) public pure returns (bool leapYear) {
-        leapYear = BokkyPooBahsDateTimeLibrary._isLeapYear(year);
+        leapYear = DateTime._isLeapYear(year);
     }
 
     function isWeekDay(uint256 timestamp) public pure returns (bool weekDay) {
-        weekDay = BokkyPooBahsDateTimeLibrary.isWeekDay(timestamp);
+        weekDay = DateTime.isWeekDay(timestamp);
     }
 
     function isWeekEnd(uint256 timestamp) public pure returns (bool weekEnd) {
-        weekEnd = BokkyPooBahsDateTimeLibrary.isWeekEnd(timestamp);
+        weekEnd = DateTime.isWeekEnd(timestamp);
     }
 
     function getDaysInMonth(uint256 timestamp)
@@ -189,7 +189,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 daysInMonth)
     {
-        daysInMonth = BokkyPooBahsDateTimeLibrary.getDaysInMonth(timestamp);
+        daysInMonth = DateTime.getDaysInMonth(timestamp);
     }
 
     function _getDaysInMonth(uint256 year, uint256 month)
@@ -197,7 +197,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 daysInMonth)
     {
-        daysInMonth = BokkyPooBahsDateTimeLibrary._getDaysInMonth(year, month);
+        daysInMonth = DateTime._getDaysInMonth(year, month);
     }
 
     function getDayOfWeek(uint256 timestamp)
@@ -205,31 +205,31 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 dayOfWeek)
     {
-        dayOfWeek = BokkyPooBahsDateTimeLibrary.getDayOfWeek(timestamp);
+        dayOfWeek = DateTime.getDayOfWeek(timestamp);
     }
 
     function getYear(uint256 timestamp) public pure returns (uint256 year) {
-        year = BokkyPooBahsDateTimeLibrary.getYear(timestamp);
+        year = DateTime.getYear(timestamp);
     }
 
     function getMonth(uint256 timestamp) public pure returns (uint256 month) {
-        month = BokkyPooBahsDateTimeLibrary.getMonth(timestamp);
+        month = DateTime.getMonth(timestamp);
     }
 
     function getDay(uint256 timestamp) public pure returns (uint256 day) {
-        day = BokkyPooBahsDateTimeLibrary.getDay(timestamp);
+        day = DateTime.getDay(timestamp);
     }
 
     function getHour(uint256 timestamp) public pure returns (uint256 hour) {
-        hour = BokkyPooBahsDateTimeLibrary.getHour(timestamp);
+        hour = DateTime.getHour(timestamp);
     }
 
     function getMinute(uint256 timestamp) public pure returns (uint256 minute) {
-        minute = BokkyPooBahsDateTimeLibrary.getMinute(timestamp);
+        minute = DateTime.getMinute(timestamp);
     }
 
     function getSecond(uint256 timestamp) public pure returns (uint256 second) {
-        second = BokkyPooBahsDateTimeLibrary.getSecond(timestamp);
+        second = DateTime.getSecond(timestamp);
     }
 
     function addYears(uint256 timestamp, uint256 _years)
@@ -237,7 +237,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 newTimestamp)
     {
-        newTimestamp = BokkyPooBahsDateTimeLibrary.addYears(timestamp, _years);
+        newTimestamp = DateTime.addYears(timestamp, _years);
     }
 
     function addMonths(uint256 timestamp, uint256 _months)
@@ -245,10 +245,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 newTimestamp)
     {
-        newTimestamp = BokkyPooBahsDateTimeLibrary.addMonths(
-            timestamp,
-            _months
-        );
+        newTimestamp = DateTime.addMonths(timestamp, _months);
     }
 
     function addDays(uint256 timestamp, uint256 _days)
@@ -256,7 +253,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 newTimestamp)
     {
-        newTimestamp = BokkyPooBahsDateTimeLibrary.addDays(timestamp, _days);
+        newTimestamp = DateTime.addDays(timestamp, _days);
     }
 
     function addHours(uint256 timestamp, uint256 _hours)
@@ -264,7 +261,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 newTimestamp)
     {
-        newTimestamp = BokkyPooBahsDateTimeLibrary.addHours(timestamp, _hours);
+        newTimestamp = DateTime.addHours(timestamp, _hours);
     }
 
     function addMinutes(uint256 timestamp, uint256 _minutes)
@@ -272,10 +269,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 newTimestamp)
     {
-        newTimestamp = BokkyPooBahsDateTimeLibrary.addMinutes(
-            timestamp,
-            _minutes
-        );
+        newTimestamp = DateTime.addMinutes(timestamp, _minutes);
     }
 
     function addSeconds(uint256 timestamp, uint256 _seconds)
@@ -283,10 +277,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 newTimestamp)
     {
-        newTimestamp = BokkyPooBahsDateTimeLibrary.addSeconds(
-            timestamp,
-            _seconds
-        );
+        newTimestamp = DateTime.addSeconds(timestamp, _seconds);
     }
 
     function subYears(uint256 timestamp, uint256 _years)
@@ -294,7 +285,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 newTimestamp)
     {
-        newTimestamp = BokkyPooBahsDateTimeLibrary.subYears(timestamp, _years);
+        newTimestamp = DateTime.subYears(timestamp, _years);
     }
 
     function subMonths(uint256 timestamp, uint256 _months)
@@ -302,10 +293,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 newTimestamp)
     {
-        newTimestamp = BokkyPooBahsDateTimeLibrary.subMonths(
-            timestamp,
-            _months
-        );
+        newTimestamp = DateTime.subMonths(timestamp, _months);
     }
 
     function subDays(uint256 timestamp, uint256 _days)
@@ -313,7 +301,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 newTimestamp)
     {
-        newTimestamp = BokkyPooBahsDateTimeLibrary.subDays(timestamp, _days);
+        newTimestamp = DateTime.subDays(timestamp, _days);
     }
 
     function subHours(uint256 timestamp, uint256 _hours)
@@ -321,7 +309,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 newTimestamp)
     {
-        newTimestamp = BokkyPooBahsDateTimeLibrary.subHours(timestamp, _hours);
+        newTimestamp = DateTime.subHours(timestamp, _hours);
     }
 
     function subMinutes(uint256 timestamp, uint256 _minutes)
@@ -329,10 +317,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 newTimestamp)
     {
-        newTimestamp = BokkyPooBahsDateTimeLibrary.subMinutes(
-            timestamp,
-            _minutes
-        );
+        newTimestamp = DateTime.subMinutes(timestamp, _minutes);
     }
 
     function subSeconds(uint256 timestamp, uint256 _seconds)
@@ -340,10 +325,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 newTimestamp)
     {
-        newTimestamp = BokkyPooBahsDateTimeLibrary.subSeconds(
-            timestamp,
-            _seconds
-        );
+        newTimestamp = DateTime.subSeconds(timestamp, _seconds);
     }
 
     function diffYears(uint256 fromTimestamp, uint256 toTimestamp)
@@ -351,10 +333,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 _years)
     {
-        _years = BokkyPooBahsDateTimeLibrary.diffYears(
-            fromTimestamp,
-            toTimestamp
-        );
+        _years = DateTime.diffYears(fromTimestamp, toTimestamp);
     }
 
     function diffMonths(uint256 fromTimestamp, uint256 toTimestamp)
@@ -362,10 +341,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 _months)
     {
-        _months = BokkyPooBahsDateTimeLibrary.diffMonths(
-            fromTimestamp,
-            toTimestamp
-        );
+        _months = DateTime.diffMonths(fromTimestamp, toTimestamp);
     }
 
     function diffDays(uint256 fromTimestamp, uint256 toTimestamp)
@@ -373,10 +349,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 _days)
     {
-        _days = BokkyPooBahsDateTimeLibrary.diffDays(
-            fromTimestamp,
-            toTimestamp
-        );
+        _days = DateTime.diffDays(fromTimestamp, toTimestamp);
     }
 
     function diffHours(uint256 fromTimestamp, uint256 toTimestamp)
@@ -384,10 +357,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 _hours)
     {
-        _hours = BokkyPooBahsDateTimeLibrary.diffHours(
-            fromTimestamp,
-            toTimestamp
-        );
+        _hours = DateTime.diffHours(fromTimestamp, toTimestamp);
     }
 
     function diffMinutes(uint256 fromTimestamp, uint256 toTimestamp)
@@ -395,10 +365,7 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 _minutes)
     {
-        _minutes = BokkyPooBahsDateTimeLibrary.diffMinutes(
-            fromTimestamp,
-            toTimestamp
-        );
+        _minutes = DateTime.diffMinutes(fromTimestamp, toTimestamp);
     }
 
     function diffSeconds(uint256 fromTimestamp, uint256 toTimestamp)
@@ -406,9 +373,6 @@ contract BokkyPooBahsDateTimeContract {
         pure
         returns (uint256 _seconds)
     {
-        _seconds = BokkyPooBahsDateTimeLibrary.diffSeconds(
-            fromTimestamp,
-            toTimestamp
-        );
+        _seconds = DateTime.diffSeconds(fromTimestamp, toTimestamp);
     }
 }
