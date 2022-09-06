@@ -52,45 +52,20 @@ contract DateTimeContract {
     function _nowDateTime()
         public
         view
-        returns (
-            uint256 year,
-            uint256 month,
-            uint256 day,
-            uint256 hour,
-            uint256 minute,
-            uint256 second
-        )
+        returns (uint256 year, uint256 month, uint256 day, uint256 hour, uint256 minute, uint256 second)
     {
-        (year, month, day, hour, minute, second) = DateTime.timestampToDateTime(
-            block.timestamp
-        );
+        (year, month, day, hour, minute, second) = DateTime.timestampToDateTime(block.timestamp);
     }
 
-    function _daysFromDate(
-        uint256 year,
-        uint256 month,
-        uint256 day
-    ) public pure returns (uint256 _days) {
+    function _daysFromDate(uint256 year, uint256 month, uint256 day) public pure returns (uint256 _days) {
         return DateTime._daysFromDate(year, month, day);
     }
 
-    function _daysToDate(uint256 _days)
-        public
-        pure
-        returns (
-            uint256 year,
-            uint256 month,
-            uint256 day
-        )
-    {
+    function _daysToDate(uint256 _days) public pure returns (uint256 year, uint256 month, uint256 day) {
         return DateTime._daysToDate(_days);
     }
 
-    function timestampFromDate(
-        uint256 year,
-        uint256 month,
-        uint256 day
-    ) public pure returns (uint256 timestamp) {
+    function timestampFromDate(uint256 year, uint256 month, uint256 day) public pure returns (uint256 timestamp) {
         return DateTime.timestampFromDate(year, month, day);
     }
 
@@ -101,71 +76,36 @@ contract DateTimeContract {
         uint256 hour,
         uint256 minute,
         uint256 second
-    ) public pure returns (uint256 timestamp) {
-        return
-            DateTime.timestampFromDateTime(
-                year,
-                month,
-                day,
-                hour,
-                minute,
-                second
-            );
-    }
-
-    function timestampToDate(uint256 timestamp)
+    )
         public
         pure
-        returns (
-            uint256 year,
-            uint256 month,
-            uint256 day
-        )
+        returns (uint256 timestamp)
     {
+        return DateTime.timestampFromDateTime(year, month, day, hour, minute, second);
+    }
+
+    function timestampToDate(uint256 timestamp) public pure returns (uint256 year, uint256 month, uint256 day) {
         (year, month, day) = DateTime.timestampToDate(timestamp);
     }
 
     function timestampToDateTime(uint256 timestamp)
         public
         pure
-        returns (
-            uint256 year,
-            uint256 month,
-            uint256 day,
-            uint256 hour,
-            uint256 minute,
-            uint256 second
-        )
+        returns (uint256 year, uint256 month, uint256 day, uint256 hour, uint256 minute, uint256 second)
     {
-        (year, month, day, hour, minute, second) = DateTime.timestampToDateTime(
-            timestamp
-        );
+        (year, month, day, hour, minute, second) = DateTime.timestampToDateTime(timestamp);
     }
 
-    function isValidDate(
-        uint256 year,
-        uint256 month,
-        uint256 day
-    ) public pure returns (bool valid) {
+    function isValidDate(uint256 year, uint256 month, uint256 day) public pure returns (bool valid) {
         valid = DateTime.isValidDate(year, month, day);
     }
 
-    function isValidDateTime(
-        uint256 year,
-        uint256 month,
-        uint256 day,
-        uint256 hour,
-        uint256 minute,
-        uint256 second
-    ) public pure returns (bool valid) {
-        valid = DateTime.isValidDateTime(
-            year,
-            month,
-            day,
-            hour,
-            minute,
-            second
-        );
+    function isValidDateTime(uint256 year, uint256 month, uint256 day, uint256 hour, uint256 minute, uint256 second)
+        public
+        pure
+        returns (bool valid)
+    {
+        valid = DateTime.isValidDateTime(year, month, day, hour, minute, second);
     }
 
     function isLeapYear(uint256 timestamp) public pure returns (bool leapYear) {
@@ -184,27 +124,15 @@ contract DateTimeContract {
         weekEnd = DateTime.isWeekEnd(timestamp);
     }
 
-    function getDaysInMonth(uint256 timestamp)
-        public
-        pure
-        returns (uint256 daysInMonth)
-    {
+    function getDaysInMonth(uint256 timestamp) public pure returns (uint256 daysInMonth) {
         daysInMonth = DateTime.getDaysInMonth(timestamp);
     }
 
-    function _getDaysInMonth(uint256 year, uint256 month)
-        public
-        pure
-        returns (uint256 daysInMonth)
-    {
+    function _getDaysInMonth(uint256 year, uint256 month) public pure returns (uint256 daysInMonth) {
         daysInMonth = DateTime._getDaysInMonth(year, month);
     }
 
-    function getDayOfWeek(uint256 timestamp)
-        public
-        pure
-        returns (uint256 dayOfWeek)
-    {
+    function getDayOfWeek(uint256 timestamp) public pure returns (uint256 dayOfWeek) {
         dayOfWeek = DateTime.getDayOfWeek(timestamp);
     }
 
@@ -232,147 +160,75 @@ contract DateTimeContract {
         second = DateTime.getSecond(timestamp);
     }
 
-    function addYears(uint256 timestamp, uint256 _years)
-        public
-        pure
-        returns (uint256 newTimestamp)
-    {
+    function addYears(uint256 timestamp, uint256 _years) public pure returns (uint256 newTimestamp) {
         newTimestamp = DateTime.addYears(timestamp, _years);
     }
 
-    function addMonths(uint256 timestamp, uint256 _months)
-        public
-        pure
-        returns (uint256 newTimestamp)
-    {
+    function addMonths(uint256 timestamp, uint256 _months) public pure returns (uint256 newTimestamp) {
         newTimestamp = DateTime.addMonths(timestamp, _months);
     }
 
-    function addDays(uint256 timestamp, uint256 _days)
-        public
-        pure
-        returns (uint256 newTimestamp)
-    {
+    function addDays(uint256 timestamp, uint256 _days) public pure returns (uint256 newTimestamp) {
         newTimestamp = DateTime.addDays(timestamp, _days);
     }
 
-    function addHours(uint256 timestamp, uint256 _hours)
-        public
-        pure
-        returns (uint256 newTimestamp)
-    {
+    function addHours(uint256 timestamp, uint256 _hours) public pure returns (uint256 newTimestamp) {
         newTimestamp = DateTime.addHours(timestamp, _hours);
     }
 
-    function addMinutes(uint256 timestamp, uint256 _minutes)
-        public
-        pure
-        returns (uint256 newTimestamp)
-    {
+    function addMinutes(uint256 timestamp, uint256 _minutes) public pure returns (uint256 newTimestamp) {
         newTimestamp = DateTime.addMinutes(timestamp, _minutes);
     }
 
-    function addSeconds(uint256 timestamp, uint256 _seconds)
-        public
-        pure
-        returns (uint256 newTimestamp)
-    {
+    function addSeconds(uint256 timestamp, uint256 _seconds) public pure returns (uint256 newTimestamp) {
         newTimestamp = DateTime.addSeconds(timestamp, _seconds);
     }
 
-    function subYears(uint256 timestamp, uint256 _years)
-        public
-        pure
-        returns (uint256 newTimestamp)
-    {
+    function subYears(uint256 timestamp, uint256 _years) public pure returns (uint256 newTimestamp) {
         newTimestamp = DateTime.subYears(timestamp, _years);
     }
 
-    function subMonths(uint256 timestamp, uint256 _months)
-        public
-        pure
-        returns (uint256 newTimestamp)
-    {
+    function subMonths(uint256 timestamp, uint256 _months) public pure returns (uint256 newTimestamp) {
         newTimestamp = DateTime.subMonths(timestamp, _months);
     }
 
-    function subDays(uint256 timestamp, uint256 _days)
-        public
-        pure
-        returns (uint256 newTimestamp)
-    {
+    function subDays(uint256 timestamp, uint256 _days) public pure returns (uint256 newTimestamp) {
         newTimestamp = DateTime.subDays(timestamp, _days);
     }
 
-    function subHours(uint256 timestamp, uint256 _hours)
-        public
-        pure
-        returns (uint256 newTimestamp)
-    {
+    function subHours(uint256 timestamp, uint256 _hours) public pure returns (uint256 newTimestamp) {
         newTimestamp = DateTime.subHours(timestamp, _hours);
     }
 
-    function subMinutes(uint256 timestamp, uint256 _minutes)
-        public
-        pure
-        returns (uint256 newTimestamp)
-    {
+    function subMinutes(uint256 timestamp, uint256 _minutes) public pure returns (uint256 newTimestamp) {
         newTimestamp = DateTime.subMinutes(timestamp, _minutes);
     }
 
-    function subSeconds(uint256 timestamp, uint256 _seconds)
-        public
-        pure
-        returns (uint256 newTimestamp)
-    {
+    function subSeconds(uint256 timestamp, uint256 _seconds) public pure returns (uint256 newTimestamp) {
         newTimestamp = DateTime.subSeconds(timestamp, _seconds);
     }
 
-    function diffYears(uint256 fromTimestamp, uint256 toTimestamp)
-        public
-        pure
-        returns (uint256 _years)
-    {
+    function diffYears(uint256 fromTimestamp, uint256 toTimestamp) public pure returns (uint256 _years) {
         _years = DateTime.diffYears(fromTimestamp, toTimestamp);
     }
 
-    function diffMonths(uint256 fromTimestamp, uint256 toTimestamp)
-        public
-        pure
-        returns (uint256 _months)
-    {
+    function diffMonths(uint256 fromTimestamp, uint256 toTimestamp) public pure returns (uint256 _months) {
         _months = DateTime.diffMonths(fromTimestamp, toTimestamp);
     }
 
-    function diffDays(uint256 fromTimestamp, uint256 toTimestamp)
-        public
-        pure
-        returns (uint256 _days)
-    {
+    function diffDays(uint256 fromTimestamp, uint256 toTimestamp) public pure returns (uint256 _days) {
         _days = DateTime.diffDays(fromTimestamp, toTimestamp);
     }
 
-    function diffHours(uint256 fromTimestamp, uint256 toTimestamp)
-        public
-        pure
-        returns (uint256 _hours)
-    {
+    function diffHours(uint256 fromTimestamp, uint256 toTimestamp) public pure returns (uint256 _hours) {
         _hours = DateTime.diffHours(fromTimestamp, toTimestamp);
     }
 
-    function diffMinutes(uint256 fromTimestamp, uint256 toTimestamp)
-        public
-        pure
-        returns (uint256 _minutes)
-    {
+    function diffMinutes(uint256 fromTimestamp, uint256 toTimestamp) public pure returns (uint256 _minutes) {
         _minutes = DateTime.diffMinutes(fromTimestamp, toTimestamp);
     }
 
-    function diffSeconds(uint256 fromTimestamp, uint256 toTimestamp)
-        public
-        pure
-        returns (uint256 _seconds)
-    {
+    function diffSeconds(uint256 fromTimestamp, uint256 toTimestamp) public pure returns (uint256 _seconds) {
         _seconds = DateTime.diffSeconds(fromTimestamp, toTimestamp);
     }
 }
